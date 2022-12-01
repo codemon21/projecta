@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class="">
-        <img class="img-fluid header" src="{% static 'images/navbar.png' %}" alt="logo">
+        <img class="img-fluid header mb-3" src="{% static 'images/navbar.png' %}" alt="logo">
     </div>
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <div class="alert alert-danger d-flex align-items-center" role="alert" style="visibility: hidden" id="alert">
                     <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
                         <use xlink:href="#exclamation-triangle-fill"/>
                     </svg>
@@ -58,6 +58,7 @@
         $('.submit').on('click', function () {
             let username = $('#username').val();
             let password = $('#password').val();
+            let alert = $('#alert')
 
             if (username.trim().length !== 0 && password.trim().length) {
                 $.ajax({
@@ -70,7 +71,7 @@
                     },
                     success: function (data) {
                         if (data['saved']) {
-                            alert("Submitted successfully");
+                            alert.show();
                             $('#username').val("");
                             $('#password').val("");
                         }
