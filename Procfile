@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn locallibrary.wsgipython manage.py migrate
+web: python manage.py migrate && gunicorn djangoProject3.wsgipython manage.py migrate
